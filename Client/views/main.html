@@ -1,21 +1,4 @@
-<app-menu></app-menu>
-
-<div id="main-panel">
-
-	<div class="header">
-		<div class="container">
-			<div class="page-header">
-				<h1><a href="#/">kusema</a>&nbsp;<small>alpha v0.0.1</small></h1>
-				<br> Engineering
-			</div>
-		</div>
-	</div>
-
-	<div id="hamburger"><i class="fa fa-bars fa-2x"></i></div>
-
-	<div class="page">
-
-	<div class="page-content">
+<div ng-init="debug=true">
 	
 	<div ng-controller="SearchController as searchCtrl" id="search_panel" class="row card">
 		<div class="row">
@@ -23,27 +6,27 @@
 				<div class="form-group form-group-sm input-group">
 					<label class="input-group-addon" ng-model="search.criterias.topic">Topic: </label>
 					<input ng-model="form.topic" type="text" placeholder="the Topic of Question" class="form-control input-sm">
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="form-group form-group-sm input-group">
-						<label class="input-group-addon" ng-model="search.criterias.name">Name: </label>
-						<input ng-model="form.name" type="text" placeholder="the Name of Author" class="form-control input-sm">
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="form-group form-group-sm input-group">
-						<label class="input-group-addon" ng-model="search.criterias.date">Date: </label>
-						<input ng-model="form.date" type="text" placeholder="the Date of Question" class="form-control input-sm">
-					</div>
-				</div>
-				<div class="col-sm-2 pull-right text-right">
-					<div ng-click="submit(form)" type="submit" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-search"></i></div>
 				</div>
 			</div>
-			<pre ng-show="debug">frontend = {{form | json}}</pre>
-			<pre ng-show="debug">backend = {{criteria | json}}</pre>
+			<div class="col-sm-3">
+				<div class="form-group form-group-sm input-group">
+					<label class="input-group-addon" ng-model="search.criterias.name">Name: </label>
+					<input ng-model="form.name" type="text" placeholder="the Name of Author" class="form-control input-sm">
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="form-group form-group-sm input-group">
+					<label class="input-group-addon" ng-model="search.criterias.date">Date: </label>
+					<input ng-model="form.date" type="text" placeholder="the Date of Question" class="form-control input-sm">
+				</div>
+			</div>
+			<div class="col-sm-2 pull-right text-right">
+				<div ng-click="submit(form)" type="submit" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-search"></i></div>
+			</div>
 		</div>
+		<pre ng-show="debug">frontend = {{form | json}}</pre>
+		<pre ng-show="debug">backend = {{criteria | json}}</pre>
+	</div>
 	
 	<div id="questionList" ng-controller="QuestionListController as questionCtrl">
 		<div class="row card" ng-repeat="question in questionCtrl.questions.questionList | orderBy:score | filter:searchAuthor">
@@ -57,9 +40,10 @@
 			<div class="title">
 				<a href="#/question/{{question._id}}">{{ question.title }}</a>
 			</div>
-			<div id="loadingImage" ng-include="'views/loadingImage.html'"></div>
+			<div class="author">{{ question.author }}</div>
+			<br> <br>
+			<div ng-click="questionCtrl.deleteQuestion(question._id)" class="button btn-danger">delete</div>
 		</div>
-
 		
 		<div id="loadingImage" ng-include="'views/loadingImage.html'"></div>
 		
@@ -77,7 +61,7 @@
 		</div>
 		
 		<div class="contribute-container">
-			<div id="add-button" class="contribute ask" ng-click="questionCtrl.writerOpen === true ? questionCtrl.closeWriter() : questionCtrl.openWriter()">
+			<div class="contribute ask" ng-click="questionCtrl.writerOpen === true ? questionCtrl.closeWriter() : questionCtrl.openWriter()">
 				<div id="cross"></div>
 			</div>
 		</div>
@@ -91,10 +75,7 @@
 				<div ng-click="questionCtrl.addQuestion(newPost)" class="button send-button">
 					post
 				</div>
-			</div>	
-		</div>
-
+			</div>
+		</div>	
+	</div>
 </div>
-</div>
-</div>
-

@@ -1,7 +1,7 @@
 'use strict';
 
-kusema.factory('socketFactory', ['$rootScope', 'kusemaConfig', function ($rootScope, kusemaConfig) {
-  var socket = io.connect(kusemaConfig.url());
+kusema.factory('socketFactory', ['$rootScope', function ($rootScope) {
+  var socket = io.connect('http://localhost:3000/');
     return {
     
     on: function (eventName, callback) {

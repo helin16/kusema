@@ -4,10 +4,9 @@
     <meta charset="utf-8">
     <title>kusema</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/animate.css">
     <link rel="stylesheet" href="styles/loader.css">
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="scripts/directives/menu.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -17,12 +16,20 @@
     <!-- Select2 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/css/select2.min.css" rel="stylesheet" />
   </head>
-
-  <body ng-app="kusema" >
+  <body ng-app="kusema">
 	<div ng-include="'checkBrowser.html'"></div>
-	<div class="browser-content" ng-view>
-		<!-- Pages are inserted here -->
+    <div class="header">
+		<div class="container">
+			<div class="page-header">
+			  <h1><a href="#/">kusema</a>&nbsp;<small>alpha v0.0.1</small></h1>
+			  <br> Engineering
+			</div>
+		</div>
 	</div>
+
+    <div class="container">
+      <div ng-view></div>
+    </div>
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
@@ -32,11 +39,9 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/socket.io-client/socket.io.js"></script>
 
-    <script src="scripts/config.js"></script>
     <script src="scripts/app.js"></script>
 
     <script src="scripts/directives/exampleDirective.js"></script>
-    <script src="scripts/directives/menuDirective.js"></script>
 
     <script src="scripts/controllers/MainCtrl.js"></script>
     <script src="scripts/controllers/QuestionCtrl.js"></script>
